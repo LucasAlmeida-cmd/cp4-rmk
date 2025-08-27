@@ -69,17 +69,4 @@ public class ProdutoController {
         return "redirect:/produto";
     }
 
-//    @PatchMapping("/{id}")
-//    public ResponseEntity<EntityModel<Produto>> atualizarParcialmente(
-//            @PathVariable Long id,
-//            @RequestBody Map<String, Object> updates) {
-//        try {
-//            Produto produtoAtualizado = produtoService.atualizarParcialmente(id, updates);
-//            return ResponseEntity.ok(produtoAssembler.toModel(produtoAtualizado));
-//        } catch (IllegalArgumentException e) {
-//            return ResponseEntity.badRequest().build();
-//        } catch (ProdutoNotFoundException e) {
-//            throw new RuntimeException(e);
-//        }
-//    }
 }
