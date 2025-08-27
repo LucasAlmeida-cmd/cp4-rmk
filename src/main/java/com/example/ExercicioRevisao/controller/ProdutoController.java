@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Optional;
 
 @Controller
-@RequestMapping("/produtos")
+@RequestMapping("/produto")
 public class ProdutoController {
 
     @Autowired
@@ -37,11 +37,10 @@ public class ProdutoController {
     @PostMapping
     public String adicionarProduto(Produto produto){
         produtoService.adicionarProduto(produto);
-        return "redirect:/produtos";
+        return "redirect:/produto";
     }
 
-    @GetMapping
-    @RequestMapping("/buscarPorNome")
+    @GetMapping("/buscarPorNome")
     public String buscarPorNome(@RequestParam String nome, Model model){
         List<Produto> produto = Collections.singletonList(produtoService.findAllByNome(nome));
         model.addAttribute("produtos", List.of(produto));
@@ -51,24 +50,25 @@ public class ProdutoController {
 
 
     @GetMapping("/editar/{id}")
-    public String carregarFormularioEdicao(@PathVariable Long id, Model model) {
-        Optional<Produto> produto = produtoService.findById(id);
-        model.addAttribute("patio", produto);
+    public String carregarFormularioEdicao(@PathVariable Long id, Model model) throws ProdutoNotFoundException {
+        Produto produto = produtoService.findById(id)
+                .orElseThrow(() -> new ProdutoNotFoundException(id));
+        model.addAttribute("produto", produto);
         return "formulario-atualizar";
     }
 
     @PutMapping("/editar/{id}")
     public String atualizar(@PathVariable Long id, @ModelAttribute Produto produto) throws ProdutoNotFoundException {
         produtoService.atualizarProduto(id, produto);
-        return "redirect:/produtos";
+        return "redirect:/produto";
     }
 
-//    @DeleteMapping("/{id}")
-//    public ResponseEntity<Produto> deletarPorId(@PathVariable Long id){
-//        produtoService.deletarProduto(id);
-//        return ResponseEntity.noContent().build();
-//    }
-//
+    @DeleteMapping("/{id}")
+    public String deletarPorId(@PathVariable Long id){
+        produtoService.deletarProduto(id);
+        return "redirect:/produto";
+    }
+
 //    @PatchMapping("/{id}")
 //    public ResponseEntity<EntityModel<Produto>> atualizarParcialmente(
 //            @PathVariable Long id,

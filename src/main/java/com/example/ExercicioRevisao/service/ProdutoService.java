@@ -19,9 +19,6 @@ public class ProdutoService {
         return produtoRepository.save(produto);
     }
 
-    public Optional<Produto> getProduto(Long id){
-        return produtoRepository.findById(id);
-    }
 
     public List<Produto> getAllProdutos(){
         return produtoRepository.findAll();

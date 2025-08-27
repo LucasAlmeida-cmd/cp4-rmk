@@ -10,16 +10,25 @@
 <h1>Atualizar Pátio</h1>
 
 
-<form th:action="@{/patio/editar/{indentificacao}(indentificacao=${patio.identificacao})}"
-      th:object="${patio}"
+<form th:action="@{/produto/editar/{id}(id=${produto.id})}"
+      th:object="${produto}"
       method="post">
     <input type="hidden" name="_method" value="put" />
 
-    <label>Comprimento: </label>
-    <input type="text" th:field="*{comprimento}" required />
+    <label>Nome: </label>
+    <input type="text" th:field="*{nome}" />
 
-    <label>Largura:</label>
-    <input type="text" th:field="*{largura}" required />
+    <label>Tipo:</label>
+    <input type="text" th:field="*{tipo}"  />
+
+    <label>Classificação:</label>
+    <input type="text" th:field="*{classificacao}"  />
+
+    <label>Tamanho:</label>
+    <input type="number" th:field="*{tamanho}"  />
+
+    <label>Preço:</label>
+    <input type="number" th:field="*{preco}" step="any" min="0"  />
 
     <button type="submit">Atualizar</button>
 </form>

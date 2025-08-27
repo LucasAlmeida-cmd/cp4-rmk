@@ -8,12 +8,12 @@
 <body>
 <h1>Lista de Produtos</h1>
 <div class="container-link">
-    <a href="/produtos/novo">Adicionar Novo Produto</a>
+    <a href="/produto/novo">Adicionar Novo Produto</a>
 </div>
 
 <div>
     <h1>Buscar Por Nome:</h1>
-    <form th:action="@{/produtos/buscarPorNome}" method="get">
+    <form th:action="@{/produto/buscarPorNome}" method="get">
         <input type="text" name="nome" placeholder="Digite o Nome:"/>
         <button type="submit">Buscar</button>
     </form>
@@ -29,11 +29,11 @@
         <p th:text="${produto.getPreco()}">Preço do Produto:</p>
 
 
-        <form th:action="@{'/produtos/editar/' + ${produto.id}}" method="get" style="display:inline;">
+        <form th:action="@{'/produto/editar/' + ${produto.id}}" method="get" style="display:inline;">
             <button type="submit">Atualizar</button>
         </form>
 
-        <form th:action="@{'/produtos/' + ${produto.id}}"
+        <form th:action="@{'/produto/' + ${produto.id}}"
               method="post" style="display:inline;">
             <input type="hidden" name="_method" value="delete" />
             <button type="submit" onclick="return confirm('Tem certeza que deseja deletar?')">Deletar</button>
