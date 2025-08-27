@@ -16,3 +16,8 @@ criei uma nova branch no mesmo repo chamada mcv-branch, vamos atualizar lá com 
 - cria a pasta static.css
 - copie e cola o arquivo style.css lá
 
+## a fazer
+
+- deploy desse novo projeto
+- atualizar readme
+- gravar o video
